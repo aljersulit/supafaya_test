@@ -71,7 +71,7 @@ function HiringTest() {
 				setTimer((prev) => {
 					return {
 						...prev,
-						time: prev.time++,
+						time: prev.time + 1,
 					};
 				});
 			}, 1000);
@@ -99,6 +99,15 @@ function HiringTest() {
 			isRunning: false,
 		});
 	}
+
+  // Time Format
+  function formatTime(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return (
+      `${minutes} mins ${seconds} secs`
+    );
+  }
 
 	// PART 3
 	const [todo, setTodo] = useState("");
@@ -157,8 +166,7 @@ function HiringTest() {
 				{/* Challenge 2: Make this timer work */}
 				<div>
 					<h1>2. Create a Basic Timer</h1>
-					<span> mins </span>
-					<span>{timer.time} secs</span>
+					<span>{formatTime(timer.time)}</span>
 					<div className="button2">
 						<button
 							className="button green"
